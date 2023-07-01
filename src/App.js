@@ -67,9 +67,9 @@ function App() {
 
   return (
     <div className="App">
-      {learnerData.learners.map((learner) => { // Iterate through each object and returns a Learner component 
+      {learnerData.learners.map((learner) => { // Iterate through each object in learnerData and returns a Learner component 
         return (
-          <Learner // Calling Learner component with prop "learner" with JSX variable 
+          <Learner // Call Learner component with prop "learner" with JSX variable 
             learner={learner}
           />
         )
@@ -78,13 +78,13 @@ function App() {
   );
 }
 
-function Learner ({learner}) {  // Creating Learner component that is called in the App component for each object in learnerData, 
+function Learner ({learner}) {  // Creating Learner component that is called in the App component for instance of object
   return(
     <div className = "learnerList">
       <h1>Learner: {learner.name}</h1>
       <h2>Biography: {learner.bio}</h2>
        <ul>
-        {learner.scores.map((score) =>{ // Iterating through the nested object "scores" within the current object 
+        {learner.scores.map((score) =>{ // Iterating through the nested object "scores" within the current object, "learner" is used instead of "learnerData" in the map method because in the Learner function, the map method in App component already references learnerData and returns Learner component for each mapped object.  
           return (
             <Score
             score = {score} // Score component with prop score with JSX variable "score", called for each object
@@ -96,7 +96,7 @@ function Learner ({learner}) {  // Creating Learner component that is called in 
   )
 }
 
-function Score ({score}) { // Creating Score component called in Learner component for displaying the nested object values in learnerData
+function Score ({score}) { // Creating Score component called in Learner component for displaying the nested object values in learnerData.learner.scores
   return(
     <div className ="scoreList">
       <h4>Date: {score.date}</h4>
